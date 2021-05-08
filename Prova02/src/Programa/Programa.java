@@ -118,9 +118,11 @@ case 2 /*Relatórios*/:
 
                             int qntdProdVenda;
                             System.out.println("\n-> Código do produto a ser vendido");
+                            System.out.printf("\nR:");
                             ler.nextLine();
 
                             System.out.println("\n-> Insira a quantidade de produtos vendidos");
+                            System.out.printf("\nR:");
                             qntdProdVenda = ler.nextInt();
                             ler.nextLine();
 
