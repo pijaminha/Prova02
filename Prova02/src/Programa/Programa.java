@@ -70,7 +70,7 @@ case 1 /*Cadastros*/:
             
                 case 03:
                     System.out.println("\n-> Entendido, voltando ao menu!");
-                return;
+                break;
             }
             break;
 case 2 /*Relatórios*/:
@@ -93,10 +93,11 @@ case 2 /*Relatórios*/:
                         DoubleSummaryStatistics stats = produtos.stream().collect(Collectors.summarizingDouble(Produto::getValor));
                         System.out.printf("%s\n", "---------------------------------------------------------------------------");
                         System.out.printf("Maior Valor: R$ %.2f\tMenor Valor: R$ %.2f\tValor Médio: R$ %.2f\n", stats.getMax(), stats.getMin(), stats.getAverage());
-    break;}
+            }
+    break;
                         case 04:
                         System.out.println("\nEntendido! Encerrando a aplicação...");
-return;
+    break;
                 }
     break;
     case 3/*Vendas*/: 
@@ -137,6 +138,7 @@ return;
                         break;
                  }
                 } 
+    break;
             } while (opc3 != 0);
 break;
                         case 0:
@@ -146,7 +148,7 @@ break;
 
     case 4/*Encerrando*/:
                         System.out.println("\nEntendido! Encerrando a aplicação...");
-    break;
+    return;
 
     default: 
                         System.out.println("\nEssa opção não conta no nosso sistema!");
