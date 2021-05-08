@@ -23,55 +23,66 @@ public class Programa {
                         ler.nextLine();
 
             switch (opc) {
-    case 1:
-                        int opc1 = 0;
-                        Tela.exibirMenuCadastro();
-                        opc1 = ler.nextInt();
-
-            switch (opc1){
-
-                        case 01:
-                            if (produtos.isEmpty()) {
-                                System.out.println("Não há nenhum produto cadastrado");
-                            } else {
-                                System.out.println("\n------  Produtos  ------ ");
-                                for (Produto produto : produtos) {
-                                System.out.println("\n" + "->"+ produto);     
-                            }}
-                        break;
-
-                        case 02:
-                            System.out.println("\nInsira o Codigo do produto: ");
-                            int codigo = ler.nextInt();
-                            ler.nextLine();
-
-                            System.out.println("\nInsira a Quantidade de produtos que serão adicionados");
-                            int quantidade = ler.nextInt();
-                            ler.nextLine();
-
-                            System.out.println("\nInsira o Nome do produto adicionado");
-                            String nome = ler.nextLine();
-
-                            System.out.println("\nInsira o Valor do produto");
-                            double valor = ler.nextDouble();
-
-                            produtos.add(new Produto(codigo, quantidade, nome, valor));
-                            System.out.println("\n-> O produto foi adicionado!");
-                    
-                        break;
-
-                        case 03:
-                            System.out.println("\nEntendido, voltando ao menu!");
-                        break;
+case 1 /*Cadastros*/:
+                int opc1 = 0;
+                Tela.exibirMenuCadastro();
+                opc1 = ler.nextInt();
+            
+                        switch (opc1){
+            
+                case 01:
+                    if (produtos.isEmpty()) {
+                        System.out.println("Não há nenhum produto cadastrado");
+                    } else {
+                        System.out.println("\n-------------  Produtos  ------------- ");
+                        for (Produto produto : produtos) {
+                        System.out.println("\n" + "->"+ produto);     
+                    }}
+                break;
+            
+                case 02:
+                    System.out.println("\n-----------------------------------------------");
+                    System.out.println("\n            Cadastro de Produtos");
+                    System.out.println("\n-----------------------------------------------");
+            
+                    System.out.println("\n-> Codigo do produto");
+                    System.out.printf("\nR:");
+                    int codigo = ler.nextInt();
+                    ler.nextLine();
+            
+                    System.out.println("\n-> Quantidade de produtos adicionados");
+                    System.out.printf("\nR:");
+                    int quantidade = ler.nextInt();
+                    ler.nextLine();
+            
+                    System.out.println("\n-> Nome do produto adicionado");
+                    System.out.printf("\nR:");
+                    String nome = ler.nextLine();
+            
+                    System.out.println("\n-> Valor do produto");
+                    System.out.printf("\nR:");
+                    double valor = ler.nextDouble();
+            
+                    produtos.add(new Produto(codigo, quantidade, nome, valor));
+                    System.out.println("\n-> O produto foi adicionado!");
+            
+                break;
+            
+                case 03:
+                    System.out.println("\n-> Entendido, voltando ao menu!");
+                return;
             }
-    break;
-    case 02:
+            break;
+case 2 /*Relatórios*/:
                         int opc2 = 0;
                         Tela.exibirRelatorios();
                         opc2 = ler.nextInt();
 
             switch (opc2) {
                         case 01:
+                        if (produtos.isEmpty()) {
+                            System.out.println("Não há nenhum produto cadastrado");
+                        } else {
                         System.out.printf("\n%s\n", "---------------------------------------------------------------------------");
                         System.out.printf("\t%s\t%20s\t%15s\t%12s", "Código","Produto", "Valor(R$)", "Quantidade");
                         System.out.printf("\n%s\n", "---------------------------------------------------------------------------");
@@ -82,13 +93,13 @@ public class Programa {
                         DoubleSummaryStatistics stats = produtos.stream().collect(Collectors.summarizingDouble(Produto::getValor));
                         System.out.printf("%s\n", "---------------------------------------------------------------------------");
                         System.out.printf("Maior Valor: R$ %.2f\tMenor Valor: R$ %.2f\tValor Médio: R$ %.2f\n", stats.getMax(), stats.getMin(), stats.getAverage());
-    break;
+    break;}
                         case 04:
                         System.out.println("\nEntendido! Encerrando a aplicação...");
-    break;
+return;
                 }
     break;
-    case 3: 
+    case 3/*Vendas*/: 
                         int opc3 = -1;
                         int quantidade = 0;
                         Tela.exibirVendas();
@@ -97,43 +108,43 @@ public class Programa {
                         
 
             do {    
-                        opc3 = ler.nextInt();
-                        ler.nextLine();
  
             switch (opc3) {
                         case 01:
+                            System.out.println("------------------------------- Venda -------------------------------");
+
             for(Produto produto : produtos) {
 
                             int qntdProdVenda;
-                            System.out.println("\nInsira aqui o código do produto a ser vendido");
+                            System.out.println("\n-> Código do produto a ser vendido");
                             ler.nextLine();
 
-                            System.out.println("\nInsira a quantidade de produtos vendidos");
+                            System.out.println("\n-> Insira a quantidade de produtos vendidos");
                             qntdProdVenda = ler.nextInt();
                             ler.nextLine();
 
-            if (qntdProdVenda > quantidade) {
+            if (qntdProdVenda <= quantidade) {
 
-                                System.out.println("Não há essa quantidade de produtos em estoque, impossível fazer a venda");
+                                System.out.println("\n-> Não há essa quantidade de produtos em estoque, impossível fazer a venda");
 
             } else {
-            if (qntdProdVenda < quantidade) {
+            if (qntdProdVenda > quantidade) {
 
                                 produto.setQuantidade(produto.getQuantidade() - qntdProdVenda);
-                                System.out.println("\nCompra realizada com sucesso!");
+                                System.out.println("\nVenda realizada com sucesso!");
                             }
                         }
                         break;
                  }
                 } 
             } while (opc3 != 0);
-
+break;
                         case 0:
                             System.out.println("\nEntendido! Encerrando a aplicação...");
                         break;
     
 
-    case 20:
+    case 4/*Encerrando*/:
                         System.out.println("\nEntendido! Encerrando a aplicação...");
     break;
 
@@ -145,8 +156,8 @@ public class Programa {
                 
     
 }
-ler.close();
                         } while (opc != 0);
+ler.close();
 }
 
     }
