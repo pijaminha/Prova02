@@ -9,7 +9,7 @@ public class Tela {
         System.out.println("\n       1 - para cadastro de produtos");
         System.out.println("\n       2 - para consultar os relatórios ");
         System.out.println("\n       3 - para realizar uma venda");
-        System.out.println("\n       0 - para sair");
+        System.out.println("\n      20 - para sair");
         System.out.println("\n-----------------------------------------------");
         System.out.printf("\nR:");
     }
