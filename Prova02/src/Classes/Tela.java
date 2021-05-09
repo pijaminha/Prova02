@@ -26,8 +26,6 @@ public class Tela {
     public static void exibirRelatorios() {
         System.out.println("\n------------- RELATÓRIOS -------------");
         System.out.println("\n 01 - Produtos");
-        System.out.println("\n 02 - Vendas por Período - detalhado");
-        System.out.println("\n 03 - Vendas por Período – consolidado");
         System.out.println("\n 04 - Voltar ao Menu Anterior");
         System.out.println("\n--------------------------------------");
         System.out.printf("\nR:");
